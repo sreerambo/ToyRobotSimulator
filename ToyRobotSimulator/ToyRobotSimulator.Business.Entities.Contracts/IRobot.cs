@@ -4,8 +4,8 @@ namespace ToyRobotSimulator.Business.Entities.Contracts
 {
     public interface IRobot
     {
-        IPosition Position { get; set; }
-        Direction FacingDirection { get; set; }
+        IPosition Position { get; }
+        Direction FacingDirection { get; }
 
         /// <summary>
         /// Place the robot on the board

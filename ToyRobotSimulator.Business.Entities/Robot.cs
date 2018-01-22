@@ -8,8 +8,8 @@ namespace ToyRobotSimulator.Business.Entities
 {
     public class Robot : IRobot
     {
-        public IPosition Position { get; set; }
-        public Direction FacingDirection { get; set; }
+        public IPosition Position { get; private set; }
+        public Direction FacingDirection { get; private set; }
 
         private IBoard board;
 
@@ -33,7 +33,16 @@ namespace ToyRobotSimulator.Business.Entities
 
         public bool Place(IPosition position, Direction direction, IBoard board)
         {
-            throw new NotImplementedException();
+            if (position == null) throw new ArgumentNullException(nameof(position));
+            if (board == null) throw new ArgumentNullException(nameof(board));
+
+            if (board.IsValid(position))
+            {
+                this.Position = position;
+                this.FacingDirection = direction;
+                return true;
+            }
+            return false;
         }
 
         public string Report()

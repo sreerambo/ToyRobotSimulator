@@ -4,8 +4,4 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Include="IBidirectionalMapper.cs" />
-  </ItemGroup>
-
 </Project>

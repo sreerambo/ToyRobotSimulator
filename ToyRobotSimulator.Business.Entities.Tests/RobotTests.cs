@@ -99,7 +99,7 @@ namespace ToyRobotSimulator.Business.Entities.Tests
         }
 
         [TestMethod]
-        public void Robot_Place_ValidLocation_ReturnsTrue()
+        public void Robot_Place_ValidPositionAndBoard_ReturnsTrue()
         {
             //arrange
             var sut = CreateSUT();
@@ -112,6 +112,42 @@ namespace ToyRobotSimulator.Business.Entities.Tests
 
             //assert
             Assert.IsTrue(result);
+        }
+
+        [TestMethod]
+        public void Robot_GetPosition_ValidPositionAndBoard_ReturnsPosition()
+        {
+            //arrange
+            var sut = CreateSUT();
+            var board = new Mock<IBoard>();
+            var position = TestUtils.CreateMockPosition(0, 0);
+            board.Setup(b => b.IsValid(position.Object)).Returns(true);
+            sut.Place(position.Object, Direction.North, board.Object);
+
+            //act
+            var result = sut.Position;
+
+            //assert
+            Assert.AreEqual(position.Object.X, result.X);
+            Assert.AreEqual(position.Object.Y, result.Y);
+        }
+
+        [TestMethod]
+        public void Robot_GetFacingDirection_ValidPositionAndBoard_ReturnsFacingDirection()
+        {
+            //arrange
+            var sut = CreateSUT();
+            var board = new Mock<IBoard>();
+            var position = TestUtils.CreateMockPosition(0, 0);
+            board.Setup(b => b.IsValid(position.Object)).Returns(true);
+            var direction = Direction.West;
+            sut.Place(position.Object, direction, board.Object);
+
+            //act
+            var result = sut.FacingDirection;
+
+            //assert
+            Assert.AreEqual(direction, result);
         }
     }
 }
