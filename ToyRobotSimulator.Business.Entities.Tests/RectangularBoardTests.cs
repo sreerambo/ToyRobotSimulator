@@ -15,17 +15,9 @@ namespace ToyRobotSimulator.Business.Entities.Tests
             return new RectangularBoard(DefaultBoardSize, DefaultBoardSize);
         }
 
-        private Mock<IPosition> CreateMockPosition(int x, int y)
-        {
-            var position = new Mock<IPosition>();
-            position.Setup(p => p.X).Returns(x);
-            position.Setup(p => p.Y).Returns(y);
-            return position;
-        }
-
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public void IsValid_NullPosition_ThrowsArgumentNullException()
+        public void RectangularBoard_IsValid_NullPosition_ThrowsArgumentNullException()
         {
             //arrange
             var sut = CreateSUT();
@@ -38,7 +30,7 @@ namespace ToyRobotSimulator.Business.Entities.Tests
         }
 
         [TestMethod]
-        public void IsValid_AllValidPositions_ReturnsTrue()
+        public void RectangularBoard_IsValid_AllValidPositions_ReturnsTrue()
         {
             //arrange
             var sut = CreateSUT();
@@ -47,7 +39,7 @@ namespace ToyRobotSimulator.Business.Entities.Tests
             {
                 for (var y = 0; y < DefaultBoardSize; ++y)
                 {
-                    var position = CreateMockPosition(x, y);
+                    var position = TestUtils.CreateMockPosition(x, y);
 
                     //act
                     var result = sut.IsValid(position.Object);
@@ -59,11 +51,11 @@ namespace ToyRobotSimulator.Business.Entities.Tests
         }
 
         [TestMethod]
-        public void IsValid_InvalidPosition_ReturnsFalse()
+        public void RectangularBoard_IsValid_InvalidPosition_ReturnsFalse()
         {
             //arrange
             var sut = CreateSUT();
-            var position = CreateMockPosition(6, 6);
+            var position = TestUtils.CreateMockPosition(6, 6);
 
             //act
             var result = sut.IsValid(position.Object);
@@ -74,11 +66,11 @@ namespace ToyRobotSimulator.Business.Entities.Tests
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
-        public void IsValid_NegativePosition_ThrowsArgumentException()
+        public void RectangularBoard_IsValid_NegativePosition_ThrowsArgumentException()
         {
             //arrange
             var sut = CreateSUT();
-            var position = CreateMockPosition(-1, -1);
+            var position = TestUtils.CreateMockPosition(-1, -1);
 
             //act
             var result = sut.IsValid(position.Object);

@@ -5,8 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Class1.cs" />
-    <Compile Remove="IRobotState.cs" />
+    <Compile Include="IBidirectionalMapper.cs" />
   </ItemGroup>
 
 </Project>
