@@ -149,5 +149,165 @@ namespace ToyRobotSimulator.Business.Entities.Tests
             //assert
             Assert.AreEqual(direction, result);
         }
+
+        [TestMethod]
+        public void Robot_Right_FromNorth_ReturnsEast()
+        {
+            //arrange
+            var sut = CreateSUT();
+            var board = new Mock<IBoard>();
+            var position = TestUtils.CreateMockPosition(0, 0);
+            board.Setup(b => b.IsValid(position.Object)).Returns(true);
+            var direction = Direction.North;
+            sut.Place(position.Object, direction, board.Object);
+
+            //act
+            var success = sut.Right();
+            var result = sut.FacingDirection;
+
+            //assert
+            Assert.IsTrue(success);
+            Assert.AreEqual(Direction.East, result);
+        }
+
+        [TestMethod]
+        public void Robot_Right_FromEast_ReturnsSouth()
+        {
+            //arrange
+            var sut = CreateSUT();
+            var board = new Mock<IBoard>();
+            var position = TestUtils.CreateMockPosition(0, 0);
+            board.Setup(b => b.IsValid(position.Object)).Returns(true);
+            var direction = Direction.East;
+            sut.Place(position.Object, direction, board.Object);
+
+            //act
+            var success = sut.Right();
+            var result = sut.FacingDirection;
+
+            //assert
+            Assert.IsTrue(success);
+            Assert.AreEqual(Direction.South, result);
+        }
+
+        [TestMethod]
+        public void Robot_Right_FromSouth_ReturnsWest()
+        {
+            //arrange
+            var sut = CreateSUT();
+            var board = new Mock<IBoard>();
+            var position = TestUtils.CreateMockPosition(0, 0);
+            board.Setup(b => b.IsValid(position.Object)).Returns(true);
+            var direction = Direction.South;
+            sut.Place(position.Object, direction, board.Object);
+
+            //act
+            var success = sut.Right();
+            var result = sut.FacingDirection;
+
+            //assert
+            Assert.IsTrue(success);
+            Assert.AreEqual(Direction.West, result);
+        }
+
+        [TestMethod]
+        public void Robot_Right_FromWest_ReturnsNorth()
+        {
+            //arrange
+            var sut = CreateSUT();
+            var board = new Mock<IBoard>();
+            var position = TestUtils.CreateMockPosition(0, 0);
+            board.Setup(b => b.IsValid(position.Object)).Returns(true);
+            var direction = Direction.West;
+            sut.Place(position.Object, direction, board.Object);
+
+            //act
+            var success = sut.Right();
+            var result = sut.FacingDirection;
+
+            //assert
+            Assert.IsTrue(success);
+            Assert.AreEqual(Direction.North, result);
+        }
+
+        [TestMethod]
+        public void Robot_Left_FromNorth_ReturnsWest()
+        {
+            //arrange
+            var sut = CreateSUT();
+            var board = new Mock<IBoard>();
+            var position = TestUtils.CreateMockPosition(0, 0);
+            board.Setup(b => b.IsValid(position.Object)).Returns(true);
+            var direction = Direction.North;
+            sut.Place(position.Object, direction, board.Object);
+
+            //act
+            var success = sut.Left();
+            var result = sut.FacingDirection;
+
+            //assert
+            Assert.IsTrue(success);
+            Assert.AreEqual(Direction.West, result);
+        }
+
+        [TestMethod]
+        public void Robot_Left_FromWest_ReturnsSouth()
+        {
+            //arrange
+            var sut = CreateSUT();
+            var board = new Mock<IBoard>();
+            var position = TestUtils.CreateMockPosition(0, 0);
+            board.Setup(b => b.IsValid(position.Object)).Returns(true);
+            var direction = Direction.West;
+            sut.Place(position.Object, direction, board.Object);
+
+            //act
+            var success = sut.Left();
+            var result = sut.FacingDirection;
+
+            //assert
+            Assert.IsTrue(success);
+            Assert.AreEqual(Direction.South, result);
+        }
+
+        [TestMethod]
+        public void Robot_Left_FromSouth_ReturnsEast()
+        {
+            //arrange
+            var sut = CreateSUT();
+            var board = new Mock<IBoard>();
+            var position = TestUtils.CreateMockPosition(0, 0);
+            board.Setup(b => b.IsValid(position.Object)).Returns(true);
+            var direction = Direction.South;
+            sut.Place(position.Object, direction, board.Object);
+
+            //act
+            var success = sut.Left();
+            var result = sut.FacingDirection;
+
+            //assert
+            Assert.IsTrue(success);
+            Assert.AreEqual(Direction.East, result);
+        }
+
+        [TestMethod]
+        public void Robot_Left_FromEast_ReturnsNorth()
+        {
+            //arrange
+            var sut = CreateSUT();
+            var board = new Mock<IBoard>();
+            var position = TestUtils.CreateMockPosition(0, 0);
+            board.Setup(b => b.IsValid(position.Object)).Returns(true);
+            var direction = Direction.East;
+            sut.Place(position.Object, direction, board.Object);
+
+            //act
+            var success = sut.Left();
+            var result = sut.FacingDirection;
+
+            //assert
+            Assert.IsTrue(success);
+            Assert.AreEqual(Direction.North, result);
+        }
     }
 }
