@@ -5,6 +5,7 @@ using System.Text;
 using ToyRobotSimulator.Business.Entities.Contracts;
 using ToyRobotSimulator.Business.Entities.Contracts.Exceptions;
 using ToyRobotSimulator.Business.Entities.Utils;
+using ToyRobotSimulator.Common.Contracts;
 
 namespace ToyRobotSimulator.Business.Entities
 {
@@ -14,12 +15,11 @@ namespace ToyRobotSimulator.Business.Entities
         public Direction FacingDirection { get; private set; }
 
         private IBoard board;
-        private DirectionVectorMapper directionVectorMapper;
+        private IBidirectionalMapper<Direction, Vector2> directionVectorMapper;
 
-        public Robot()
+        public Robot(IBidirectionalMapper<Direction, Vector2> directionVectorMapper)
         {
-            //Normally I'd dependency inject this but it's so coupled to this implementation that it's not worth it for now.
-            directionVectorMapper = new DirectionVectorMapper();
+            this.directionVectorMapper = directionVectorMapper;
         }
 
         public bool Left()

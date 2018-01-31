@@ -3,6 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using ToyRobotSimulator.Business.Entities.Contracts;
 using ToyRobotSimulator.Business.Entities.Contracts.Exceptions;
+using ToyRobotSimulator.Common.Contracts;
+using System.Numerics;
 
 namespace ToyRobotSimulator.Business.Entities.Tests
 {
@@ -10,10 +12,35 @@ namespace ToyRobotSimulator.Business.Entities.Tests
     public class RobotTests
     {
         private const int DefaultBoardSize = 5;
+        private Mock<IBidirectionalMapper<Direction, Vector2>> mockDirectionVectorMapper;
+
+        //It's tempting to just use the actual mapper implementation here but for purity this is a mock
+        private Mock<IBidirectionalMapper<Direction, Vector2>> CreateMapper()
+        {
+            var northVector = new Vector2(0, 1);
+            var southVector = new Vector2(0, -1);
+            var eastVector = new Vector2(1, 0);
+            var westVector = new Vector2(-1, 0);
+
+            var mockMapper = new Mock<IBidirectionalMapper<Direction, Vector2>>();
+
+            mockMapper.Setup(m => m.Map(Direction.North)).Returns(northVector);
+            mockMapper.Setup(m => m.Map(Direction.South)).Returns(southVector);
+            mockMapper.Setup(m => m.Map(Direction.East)).Returns(eastVector);
+            mockMapper.Setup(m => m.Map(Direction.West)).Returns(westVector);
+
+            mockMapper.Setup(m => m.Map(northVector)).Returns(Direction.North);
+            mockMapper.Setup(m => m.Map(southVector)).Returns(Direction.South);
+            mockMapper.Setup(m => m.Map(eastVector)).Returns(Direction.East);
+            mockMapper.Setup(m => m.Map(westVector)).Returns(Direction.West);
+
+            return mockMapper;
+        }
 
         private Robot CreateSUT()
         {
-            return new Robot();
+            mockDirectionVectorMapper = CreateMapper();
+            return new Robot(mockDirectionVectorMapper.Object);
         }
 
         [TestMethod]
