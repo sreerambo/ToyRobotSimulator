@@ -39,10 +39,10 @@ namespace ToyRobotSimulator.Business.Entities.Tests
             {
                 for (var y = 0; y < DefaultBoardSize; ++y)
                 {
-                    var position = TestUtils.CreateMockPosition(x, y);
+                    var position = TestUtils.CreatePosition(x, y);
 
                     //act
-                    var result = sut.IsValid(position.Object);
+                    var result = sut.IsValid(position);
 
                     //assert
                     Assert.IsTrue(result, $"Test failed at position: {x}, {y}");
@@ -55,10 +55,10 @@ namespace ToyRobotSimulator.Business.Entities.Tests
         {
             //arrange
             var sut = CreateSUT();
-            var position = TestUtils.CreateMockPosition(6, 6);
+            var position = TestUtils.CreatePosition(6, 6);
 
             //act
-            var result = sut.IsValid(position.Object);
+            var result = sut.IsValid(position);
 
             //assert
             Assert.IsFalse(result);
@@ -70,10 +70,10 @@ namespace ToyRobotSimulator.Business.Entities.Tests
         {
             //arrange
             var sut = CreateSUT();
-            var position = TestUtils.CreateMockPosition(-1, -1);
+            var position = TestUtils.CreatePosition(-1, -1);
 
             //act
-            var result = sut.IsValid(position.Object);
+            var result = sut.IsValid(position);
 
             //assert
         }

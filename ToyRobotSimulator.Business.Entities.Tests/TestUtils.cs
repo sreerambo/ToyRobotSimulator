@@ -8,11 +8,13 @@ namespace ToyRobotSimulator.Business.Entities.Tests
 {
     public static class TestUtils
     {
-        public static Mock<Position> CreateMockPosition(int x, int y)
+        public static Position CreatePosition(int x, int y)
         {
-            var position = new Mock<Position>();
-            position.Setup(p => p.X).Returns(x);
-            position.Setup(p => p.Y).Returns(y);
+            var position = new Position()
+            {
+                X = x,
+                Y = y
+            };
             return position;
         }
     }

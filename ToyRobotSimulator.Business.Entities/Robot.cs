@@ -58,7 +58,14 @@ namespace ToyRobotSimulator.Business.Entities
             if (board == null) throw new RobotNotPlacedException();
 
             var directionVector = directionVectorMapper.Map(FacingDirection);
-            var
+            var transformedPosition = Vector2.Add(new Vector2(Position.X, Position.Y), directionVector);
+            //TODO: consider using Vector<,> to avoid casting
+            var newPositionPoint = new Position { X = (int)transformedPosition.X, Y = (int)transformedPosition.Y };
+            if (board.IsValid(newPositionPoint))
+            {
+                Position = newPositionPoint;
+                return true;
+            }
             return false;
         }
 
