@@ -86,7 +86,7 @@ namespace ToyRobotSimulator.Business.Entities.Tests
             var sut = CreateSUT();
 
             //act
-            var result = sut.Right();
+            var result = sut.Move();
 
             //assert
         }
@@ -99,7 +99,7 @@ namespace ToyRobotSimulator.Business.Entities.Tests
             var sut = CreateSUT();
 
             //act
-            var result = sut.Right();
+            var result = sut.Report();
 
             //assert
         }
@@ -438,6 +438,23 @@ namespace ToyRobotSimulator.Business.Entities.Tests
             Assert.IsFalse(success);
             Assert.AreEqual(0, sut.Position.X);
             Assert.AreEqual(0, sut.Position.Y);
+        }
+
+        [TestMethod]
+        public void Robot_Report_WhenPlacedInValidPosition_ReturnsFormattedString()
+        {
+            //arrange
+            var sut = CreateSUT();
+            var board = CreateBoard(5);
+            var position = TestUtils.CreatePosition(1, 2);
+            var direction = Direction.North;
+            sut.Place(position, direction, board.Object);
+
+            //act
+            var result = sut.Report();
+
+            //assert
+            Assert.AreEqual($"Position: 1,2{Environment.NewLine}Direction: North", result);
         }
     }
 }
