@@ -103,7 +103,7 @@ namespace ToyRobotSimulator.Business.Entities.Tests
             var sut = CreateSUT();
             IBoard board = null;
             var position = TestUtils.CreateMockPosition(0, 0);
-            
+
             //act
             var result = sut.Place(position.Object, Direction.North, board);
 
@@ -117,7 +117,7 @@ namespace ToyRobotSimulator.Business.Entities.Tests
             //arrange
             var sut = CreateSUT();
             var board = new Mock<IBoard>();
-            IPosition position = null;
+            Position position = null;
 
             //act
             var result = sut.Place(position, Direction.North, board.Object);
@@ -131,7 +131,7 @@ namespace ToyRobotSimulator.Business.Entities.Tests
             //arrange
             var sut = CreateSUT();
             var board = new Mock<IBoard>();
-            var position = TestUtils.CreateMockPosition(0,0);
+            var position = TestUtils.CreateMockPosition(0, 0);
             board.Setup(b => b.IsValid(position.Object)).Returns(true);
 
             //act
@@ -335,6 +335,48 @@ namespace ToyRobotSimulator.Business.Entities.Tests
             //assert
             Assert.IsTrue(success);
             Assert.AreEqual(Direction.North, result);
+        }
+
+        [TestMethod]
+        public void Robot_Move_ToInvalidPosition_PositionNotSet()
+        {
+            //arrange
+            var sut = CreateSUT();
+            var board = new Mock<IBoard>();
+            var position = TestUtils.CreateMockPosition(0, 0);
+            board.Setup(b => b.IsValid(position.Object)).Returns(true);
+            board.Setup(b => b.IsValid(TestUtils.CreateMockPosition(0, -1).Object)).Returns(false);
+            var direction = Direction.South;
+            sut.Place(position.Object, direction, board.Object);
+
+            //act
+            var success = sut.Move();
+
+            //assert
+            Assert.IsFalse(success);
+            position.VerifySet(p => p.X = It.IsAny<int>(), Times.Never);
+            position.VerifySet(p => p.Y = It.IsAny<int>(), Times.Never);
+        }
+
+        [TestMethod]
+        public void Robot_Move_ToValidPosition_PositionSet()
+        {
+            //arrange
+            var sut = CreateSUT();
+            var board = new Mock<IBoard>();
+            var position = TestUtils.CreateMockPosition(0, 0);
+            board.Setup(b => b.IsValid(position.Object)).Returns(true);
+            board.Setup(b => b.IsValid(TestUtils.CreateMockPosition(0, 1).Object)).Returns(true);
+            var direction = Direction.North;
+            sut.Place(position.Object, direction, board.Object);
+
+            //act
+            var success = sut.Move();
+
+            //assert
+            Assert.IsTrue(success);
+            position.VerifySet(p => p.X = It.IsAny<int>(), Times.Once);
+            position.VerifySet(p => p.Y = It.IsAny<int>(), Times.Once);
         }
     }
 }

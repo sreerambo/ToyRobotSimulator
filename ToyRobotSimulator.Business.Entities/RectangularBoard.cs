@@ -13,7 +13,7 @@ namespace ToyRobotSimulator.Business.Entities
             Bounds = new Rectangle(0, 0, width, height);
         }
 
-        public bool IsValid(IPosition position)
+        public bool IsValid(Position position)
         {
             if (position == null) throw new ArgumentNullException(nameof(position));
             if (position.X < 0 || position.Y < 0) throw new ArgumentException("Negative positions are not supported.", nameof(position));

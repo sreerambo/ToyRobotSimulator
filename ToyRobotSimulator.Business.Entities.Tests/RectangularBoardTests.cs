@@ -21,7 +21,7 @@ namespace ToyRobotSimulator.Business.Entities.Tests
         {
             //arrange
             var sut = CreateSUT();
-            IPosition position = null;
+            Position position = null;
 
             //act
             var result = sut.IsValid(position);

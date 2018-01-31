@@ -4,7 +4,7 @@ namespace ToyRobotSimulator.Business.Entities.Contracts
 {
     public interface IRobot
     {
-        IPosition Position { get; }
+        Position Position { get; }
         Direction FacingDirection { get; }
 
         /// <summary>
@@ -14,7 +14,7 @@ namespace ToyRobotSimulator.Business.Entities.Contracts
         /// <param name="direction">Direction the robot should be facing when placed</param>
         /// <param name="board">Board on which the robot should be placed.</param>
         /// <returns></returns>
-        bool Place(IPosition position, Direction direction, IBoard board);
+        bool Place(Position position, Direction direction, IBoard board);
 
         /// <summary>
         /// Moves the robot one unit forward in the direction it is currently facing

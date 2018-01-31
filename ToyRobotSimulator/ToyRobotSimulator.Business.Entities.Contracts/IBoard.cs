@@ -11,6 +11,6 @@ namespace ToyRobotSimulator.Business.Entities.Contracts
         /// </summary>
         /// <param name="position">Position to be tested</param>
         /// <returns></returns>
-        bool IsValid(IPosition position);
+        bool IsValid(Position position);
     }
 }

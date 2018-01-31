@@ -9,4 +9,8 @@
     <Compile Remove="IRobotState.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Include="Position.cs" />
+  </ItemGroup>
+
 </Project>
