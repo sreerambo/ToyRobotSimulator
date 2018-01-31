@@ -87,7 +87,8 @@ namespace ToyRobotSimulator.Business.Entities
         public string Report()
         {
             if (board == null) throw new RobotNotPlacedException();
-            return string.Empty;
+
+            return $"Position: {Position.X},{Position.Y}{Environment.NewLine}Direction: {FacingDirection}";
         }
     }
 }
