@@ -5,7 +5,13 @@ VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator", "ToyRobotSimulator.csproj", "{BEC69434-E5EA-4962-8E08-565482325498}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotSimulator.Business.Entities.Contracts", "ToyRobotSimulator.Business.Entities.Contracts\ToyRobotSimulator.Business.Entities.Contracts.csproj", "{9A5F18FD-2DDA-4E3B-BB3B-5F2C79C54D62}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.Business.Entities.Contracts", "ToyRobotSimulator.Business.Entities.Contracts\ToyRobotSimulator.Business.Entities.Contracts.csproj", "{9A5F18FD-2DDA-4E3B-BB3B-5F2C79C54D62}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ToyRobotSimulator.Business.Entities.Tests", "..\ToyRobotSimulator.Business.Entities.Tests\ToyRobotSimulator.Business.Entities.Tests.csproj", "{4652DDEA-3FE9-4D8C-B000-93F05CC14E0C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotSimulator.Business.Entities", "..\ToyRobotSimulator.Business.Entities\ToyRobotSimulator.Business.Entities.csproj", "{473883B1-9D61-463B-B71E-4514222D8235}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToyRobotSimulator.Common.Contracts", "ToyRobotSimulator.Common.Contracts\ToyRobotSimulator.Common.Contracts.csproj", "{B84F365D-5EB0-4A21-8E56-DD252CF52719}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{9A5F18FD-2DDA-4E3B-BB3B-5F2C79C54D62}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A5F18FD-2DDA-4E3B-BB3B-5F2C79C54D62}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A5F18FD-2DDA-4E3B-BB3B-5F2C79C54D62}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4652DDEA-3FE9-4D8C-B000-93F05CC14E0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4652DDEA-3FE9-4D8C-B000-93F05CC14E0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4652DDEA-3FE9-4D8C-B000-93F05CC14E0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4652DDEA-3FE9-4D8C-B000-93F05CC14E0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{473883B1-9D61-463B-B71E-4514222D8235}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{473883B1-9D61-463B-B71E-4514222D8235}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{473883B1-9D61-463B-B71E-4514222D8235}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{473883B1-9D61-463B-B71E-4514222D8235}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B84F365D-5EB0-4A21-8E56-DD252CF52719}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B84F365D-5EB0-4A21-8E56-DD252CF52719}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B84F365D-5EB0-4A21-8E56-DD252CF52719}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B84F365D-5EB0-4A21-8E56-DD252CF52719}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

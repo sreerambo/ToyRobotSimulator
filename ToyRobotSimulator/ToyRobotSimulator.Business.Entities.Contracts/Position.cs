@@ -4,9 +4,9 @@ using System.Text;
 
 namespace ToyRobotSimulator.Business.Entities.Contracts
 {
-    public interface IPosition
+    public class Position
     {
-        int X { get; set; }
-        int Y { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
     }
 }

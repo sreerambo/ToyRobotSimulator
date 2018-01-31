@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Primitives" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ToyRobotSimulator\ToyRobotSimulator.Business.Entities.Contracts\ToyRobotSimulator.Business.Entities.Contracts.csproj" />
+    <ProjectReference Include="..\ToyRobotSimulator\ToyRobotSimulator.Common.Contracts\ToyRobotSimulator.Common.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
