@@ -4,13 +4,4 @@
     <TargetFramework>netcoreapp1.1</TargetFramework>
   </PropertyGroup>
 
-  <ItemGroup>
-    <Compile Remove="Class1.cs" />
-    <Compile Remove="IRobotState.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Include="Position.cs" />
-  </ItemGroup>
-
 </Project>
